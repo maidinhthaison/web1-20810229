@@ -8,6 +8,7 @@ h1 {
   font-size: 60px;
   line-height: 60px;
   font-weight: 900;
+  font-family: "Changa One", cursive;
 }
 
 h3,
@@ -80,12 +81,19 @@ h4 {
   background-color: var(--web1-green);
 }
 
+#banner-small {
+  background-image: url("../images/bg-banner.gif");
+  padding: 5px;
+}
+
 /* products */
 .readmore {
   color: var(--web1-blue);
   margin-top: -4px !important;
 }
-
+.web1-text-blue {
+  color: var(--web1-blue);
+}
 /** About us **/
 #aboutus {
   background-color: var(--web1-pink);
@@ -99,6 +107,8 @@ h4 {
 /** News **/
 #news .date {
   background-color: var(--web1-green);
+  width: 6rem;
+  padding: 1.5rem;
 }
 
 /** Footer **/
