@@ -99,6 +99,19 @@ h4 {
   background-color: var(--web1-pink);
 }
 
+#about-us h4 {
+  color: black;
+}
+/** Testimonials **/
+#testimonials {
+  background-color: var(--web1-pink);
+}
+
+#testimonials .col {
+  background: url("../images/quot.png") left top no-repeat;
+  padding-left: 3rem;
+}
+
 #formSignUp {
   border-style: dashed !important;
   border-color: rgba(0, 0, 0, 0.5) !important;
