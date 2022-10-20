@@ -82,8 +82,76 @@
         </div>
       </nav>
     </header>
+    <section id="banner-small"></section>
     <section class="container py-5">
-        <h1>Contacts</h1>
+        <h1 class="pb-3">Contacts</h1>
+        <div id="map"></div>
+        <div class="row py-3">
+            <div class="col">
+              <h1>Address:</h1>
+              <div class="py-3 text-black-50">
+                227 Nguyen Van Cu Street <br/>
+                District 5 <br/>
+                HoChiMinh City, Vietnam
+              </div>
+            </div>
+            <div class="col">
+              <h1>Phone:</h1>
+              <div class="py-3 text-black-50">
+                (028) 62884499 <br/>
+                (028) 73089899
+              </div>
+            </div>
+            <div class="col">
+              <h1>Email:</h1>
+              <div class="py-3 text-black-50">
+                  <a href="mailto:info@hcmus.edu.vn">info@hcmus.edu.vn</a> <br/>
+              </div>
+            </div>
+        </div>
+
+        <div class="py-3">
+          <h1>Miscellaneous information:</h1>
+          <p class="text-black-50">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel labore beatae explicabo, libero, mollitia a modi deserunt, inventore vitae nostrum ad consequuntur voluptas. Esse corporis quod eveniet modi voluptatibus assumenda.</p>
+          <p class="text-black-50"><i>Send an email. All fields with an * are required.</i></p>
+          <form action="#" method="post" class="text-black-50">
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name *</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="" required>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email *</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="subject" class="form-label">Subject *</label>
+                  <input type="text" class="form-control" id="subject" name="subject" placeholder="" required>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message *</label>
+              <textarea class="form-control" name="message" id="message" rows="3" required></textarea>
+            </div>
+            <div class="text-end">
+              <div class="form-check">
+                
+                <label class="form-check-label" for="copy">
+                  Send copy to yourself
+                </label>
+                <input type="checkbox" value="1" id="copy">
+                <button class="btn btn-primary" type="submit">Send Email to Us</button>
+              </div>
+              
+            </div>
+          </form>
+        </div>
     </section>
     <main>
         
@@ -102,6 +170,9 @@
         <li class="nav-item">
             <a href="blogs.html" class="nav-link">Blogs</a>
         </li>
+        <li class="nav-item">
+          <a href="contacts.html" class="nav-link active">Contacts</a>
+      </li>
         <li class="nav-item">
             <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
         </li>
@@ -138,13 +209,6 @@
             </div>
         </div>
     </div>
-    
-    
-    <!-- Optional: Place to the bottom of scripts -->
-    <script>
-        const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
-    
-    </script>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -157,5 +221,9 @@
       integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Openlayers -->
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script src="js/map.js"></script>
   </body>
 </html>
