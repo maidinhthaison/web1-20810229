@@ -114,7 +114,7 @@
           <h1>Miscellaneous information:</h1>
           <p class="text-black-50">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel labore beatae explicabo, libero, mollitia a modi deserunt, inventore vitae nostrum ad consequuntur voluptas. Esse corporis quod eveniet modi voluptatibus assumenda.</p>
           <p class="text-black-50"><i>Send an email. All fields with an * are required.</i></p>
-          <form action="#" method="post" class="text-black-50">
+          <form action="#" method="post" class="text-black-50" onsubmit="onSubmit(event);">
             <div class="row">
               <div class="col">
                 <div class="mb-3">
@@ -150,6 +150,7 @@
               </div>
               
             </div>
+            <div id="error" class="text-danger text-center"></div>
           </form>
         </div>
     </section>
@@ -225,5 +226,34 @@
     <!-- Openlayers -->
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script src="js/map.js"></script>
+    <!-- reCaptcha-->
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lfi8ZUiAAAAAM5jw6ulHy4pR30VVZ6boek-nB3u"></script>
+    <script>
+      function onSubmit(e){
+          e.preventDefault();
+          grecaptcha.enterprise.ready(function() {
+          grecaptcha.enterprise.execute('6Lfi8ZUiAAAAAM5jw6ulHy4pR30VVZ6boek-nB3u', {action: 'submit'}).then(async function(token) {
+                  let response = await fetch('verify.php',{
+                    method :'POST',
+                    headers:{
+                      'Content-Type':'application/json',
+                        'Accept':'application/json'
+                    },
+                    body: JSON.stringify({'g-token':token})
+                  });
+                  if(response.status ==  200) {
+                    sendMail();
+                  }else{
+                    document.getElementById('error').innerHTML = 'Error: Can not verify reCaptcha'
+                  }
+          
+            });
+        });
+      }
+      function sendMail(){
+          document.getElementById('error').innerHTML='OK';
+      }
+        
+</script>
   </body>
 </html>
