@@ -1,5 +1,5 @@
-const API = "https://web1-api.herokuapp.com/api/";
-const AUTHENTICATE_API = "https://web1-api.herokuapp.com/users/";
+const API = "https://web1-api.herokuapp.com/api";
+const AUTHENTICATE_API = "https://web1-api.herokuapp.com/users";
 
 async function loadData(request, templateId, viewId) {
   const response = await fetch(`${API}/${request}`);
@@ -61,7 +61,7 @@ async function getAuthenticateToken(username, password) {
       "Content-Type": "application/json",
       "Accept": "application/json",
     },
-    body: JSON.stringify(postData),
+    body: JSON.stringify({username, password}),
   });
   let result = await response.json();
   console.log(result);

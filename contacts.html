@@ -265,7 +265,7 @@
           let responseMessage = document.getElementById('error');
           try {
             let token = await getAuthenticateToken('test','1c3cr3@m');
-            console.log(`token: ${token}`);
+            console.log(token);
             let postData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
