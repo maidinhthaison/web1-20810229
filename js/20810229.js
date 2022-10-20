@@ -52,18 +52,18 @@ Handlebars.registerHelper("formatDate", function (date) {
 
 /** Authenticate **/
 
-async function getAuthenticateToken() {
+async function getAuthenticateToken(_username, _password) {
   let postData = {
-    username: username,
-    password: password
+    username: _username,
+    password: _password
   };
   let response = await fetch(`${AUTHENTICATE_API}/authenticate`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Accept": "application/json",
+      "Accept": "application/json"
     },
-    body: JSON.stringify(postData),
+    body: JSON.stringify(postData)
   });
   let result = await response.json();
   console.log(result);

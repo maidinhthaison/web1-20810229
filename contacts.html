@@ -229,7 +229,6 @@
       integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
       crossorigin="anonymous"
     ></script>
-
     <!-- Openlayers -->
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script src="js/map.js"></script>
@@ -264,7 +263,7 @@
       async function sendMail(){       
           let responseMessage = document.getElementById('error');
           try {
-            let token = await getAuthenticateToken();
+            let token = await getAuthenticateToken(username, password);
             console.log(token);
             let postData = {
                 name: document.getElementById('name').value,
