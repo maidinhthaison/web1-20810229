@@ -229,8 +229,7 @@
             <p>{{summary}}</p>
             <a
               class="readmore btn btn-link pt-0"
-              href="#"
-              onclick="loadData('products/{{id}}','details-template','detail-content')"
+              href="?request=products/{{id}}"
             >Read more</a>
           </div>
         {{/each}}
@@ -245,9 +244,8 @@
                 <h3>{{date}}</h3>
               </div>
               <a
-                href="#"
-                class="btn btn-link ps-0"
-                onclick="loadData('news/{{id}}','details-template','detail-content')"
+                href="?request=news/{{id}}"
+                class="btn btn-link ps-0"               
               >Read more</a>
             </div>
             <div>
@@ -270,9 +268,16 @@
     </script>
 
   <script>
-    checkLogin();
-    loadData("products", "products-template", "products");
-    loadData("news", "news-template", "news");
+    let searchParams = new URLSearchParams(location.search);
+    let request = searchParams.get('request');
+    if (request) {
+      loadData(request, 'details-template', 'detail-content');
+    }
+    else {
+      checkLogin();
+      loadData("products", "products-template", "products");
+      loadData("news", "news-template", "news");
+    }
     function setActiveImagepath(img, imagepath, isActive = true) {
       if (isActive) {
         img.src = imagepath.replace(".", "-active.");
