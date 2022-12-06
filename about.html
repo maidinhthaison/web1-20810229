@@ -16,7 +16,7 @@
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/20810229.min.css" />
+  <link rel="stylesheet" href="css/20810229.css" />
 </head>
 
 <body>
@@ -157,14 +157,81 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
     crossorigin="anonymous"></script>
   <!-- Handlebars-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.runtime.min.js"
-    integrity="sha512-1JsLHOJ3aKKxY96SA64yDTGQXo46wjivsGj6LiZGQaz0V6cGpGjfFOm1fnH9WkNwf8FFaIU8jVrvAjSESKESww=="
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+    integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <script src="js/about.templates.min.js"></script>
+  <script type="text/javascript" src="js/20810229.js"></script>
 
-  <script type="text/javascript" src="js/20810229.min.js"></script>
+  <script id="aboutus-template" type="text/x-handlebars-template">
 
+        {{#each data}}
+        <h1 class="py-3">{{name}}</h1>
+          <div>
+            <img src="{{thumbpath}}" alt="{{name}}" class="float-start rounded-4 me-3" />
+           
+            <div class="text-black-50">{{{summary}}}</div>
+              <a href="#aboutus/{{id}}" class="btn btn-link readmore ps-0" onclick="loadDetails('aboutus/{{id}}','details-template','content-details')">Read more</a>
+          </div>
+        {{/each}}
+     </script>
+  <!-- Details template-->
+  <script id="details-template" type="text/x-handlebars-template">
+      <div class="container py-5 overflow-auto">
+          {{#each data}}
+          <h1 class="py-3">{{name}}</h1>
+          <img src="{{imagepath}}" alt="{{name}}" class="float-start rounded-4 me-3" />
+          <p>{{{description}}}</p>
+          {{/each}}
+      </div>
+      
+   </script>
+  <!-- Our vision template-->
+  <script id="our-vision-template" type="text/x-handlebars-template">
+      <h1 class="py-3">Our Vision</h1>
+      {{#each data}}
+        <div class="clearfix mb-3 ">
+          <a href="#visision/{{id}}" class="text-decoration-none"  onclick="loadDetails('visions/{{id}}','details-template','content-details')">
+            <img src="{{thumbpath}}" alt="{{name}}" class="float-start me-3 rounded-4" />
+            <h3 class="text-black">{{name}}</h3>
+            <p class="text-black-50">{{summary}}</p>
+          </a>
+          
+        </div>
+      {{/each}}
+        
+    </script>
+
+  <!-- Our team template-->
+  <script id="our-team-template" type="text/x-handlebars-template">
+      <h1 class="py-3">Our Team</h1>
+      {{#each data}}
+      <div class="col">
+        <a href="#team/{{id}}" class="text-decoration-none"  onclick="loadDetails('team/{{id}}','details-template','content-details')">
+            <img src="{{thumbpath}}" alt="{{name}}" class="rounded-4 mb-3 img-fluid" />
+            <h4>{{name}}</h4>
+            <p class="text-black-50">{{summary}}</p>
+        </a>
+      </div>
+      {{/each}}
+        
+    </script>
+
+  <!-- Testimonials template-->
+  <script id="testimonials-template" type="text/x-handlebars-template">
+      <div class="container">
+        <h1 class="text-white">Testimonials</h1>
+        <div class="row py-3">     
+          {{#each data}}
+              <div class="col">
+                  <p class="text-black-50">{{summary}}</p>
+                  <span class="text-white">{{name}}</span><br/>
+                  <a href="#" >{{email}}</a>
+              </div>   
+          {{/each}}
+        </div>
+      </div>      
+    </script>
   <script>
     checkLogin();
     if (location.hash == '' || location.hash == "#") {

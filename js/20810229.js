@@ -7,9 +7,8 @@ async function loadData(request, templateId, viewId) {
 	const response = await fetch(`${API}/${request}`);
 	const data = await response.json();
 	console.log(data);
-	// var source = document.getElementById(templateId).innerHTML;
-	// var template = Handlebars.compile(source);
-	var template = Handlebars.templates[`${templateId}.hbs`];
+	var source = document.getElementById(templateId).innerHTML;
+	var template = Handlebars.compile(source);
 	var context = { data: data };
 	var view = document.getElementById(viewId);
 	view.innerHTML = template(context);
@@ -20,9 +19,8 @@ async function loadBlogs(request, currentPage, templateId, viewId) {
 	const context = await response.json();
 	context.currentPage = currentPage;
 
-	// var source = document.getElementById(templateId).innerHTML;
-	// var template = Handlebars.compile(source);
-	var template = Handlebars.templates['blogs-template.hbs'];
+	var source = document.getElementById(templateId).innerHTML;
+	var template = Handlebars.compile(source);
 
 	var view = document.getElementById(viewId);
 	view.innerHTML = template(context);
@@ -69,7 +67,7 @@ async function addComment(e) {
 		}
 
 	} catch (error) {
-		responseMessage.innerHTML = error;
+		responseMessage.innerHTML = result.message;
 		responseMessage.className = 'text-danger';
 	}
 }
